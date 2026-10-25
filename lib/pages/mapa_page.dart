@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MapaPage extends StatefulWidget {
-  const MapaPage({Key? key}) : super(key: key);
+  const MapaPage({super.key});
 
   @override
   State<MapaPage> createState() => _MapaPageState();
@@ -77,7 +77,7 @@ class _MapaPageState extends State<MapaPage> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.1),
+                  color: Colors.red.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -134,9 +134,9 @@ class _MapaPageState extends State<MapaPage> {
                         child: Container(
                           alignment: Alignment.center,
                           constraints: const BoxConstraints(minHeight: 48),
-                          child: const Text(
-                            '▶ Iniciar corrida',
-                            style: TextStyle(
+                          child: Text(
+                            _isCorrendo ? '⏸ Parar corrida' : '▶ Iniciar corrida',
+                            style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -149,11 +149,11 @@ class _MapaPageState extends State<MapaPage> {
                   Expanded(
                     child: OutlinedButton(
                       onPressed: () {
-                        // Navegar para histórico
+                        // Ação para histórico
                       },
                       style: OutlinedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 14),
-                        side: BorderSide(color: Colors.grey.withOpacity(0.3)),
+                        side: BorderSide(color: Colors.grey.withValues(alpha: 0.3)),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -166,7 +166,7 @@ class _MapaPageState extends State<MapaPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 30),
 
               // Barra de Navegação Inferior (Menu)
               Container(
@@ -181,11 +181,40 @@ class _MapaPageState extends State<MapaPage> {
                   children: const [
                     _NavItem(label: 'Início', isSelected: false),
                     _NavItem(label: 'Dashboard', isSelected: false),
-                    _NavItem(label: 'Corrida', isSelected: false),
+                    _NavItem(label: 'Corrida', isSelected: true),
                     _NavItem(label: 'Histórico', isSelected: false),
                     _NavItem(label: 'Perfil', isSelected: false),
-                    _NavItem(label: 'Configurações', isSelected: true),
+                    _NavItem(label: 'Configurações', isSelected: false),
                   ],
+                ),
+              ),
+              const SizedBox(height: 24),
+
+              // Botão Estilizado "Voltar para o Início" (Mantém na página, reiniciando o estado se necessário)
+              Center(
+                child: TextButton.icon(
+                  onPressed: () {
+                    setState(() {
+                      _isCorrendo = false; // Reseta a corrida ao voltar para o início da página
+                    });
+                  },
+                  icon: const Icon(Icons.arrow_back, color: Color(0xFF00E5FF), size: 16),
+                  label: const Text(
+                    'Voltar para o Início',
+                    style: TextStyle(
+                      color: Color(0xFF00E5FF),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13,
+                    ),
+                  ),
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    backgroundColor: const Color(0xFF131B2E),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      side: const BorderSide(color: Colors.white10),
+                    ),
+                  ),
                 ),
               ),
             ],
