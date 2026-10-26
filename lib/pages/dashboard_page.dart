@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meu_primeiro_app/pages/configuracoes_page.dart';
+import 'package:meu_primeiro_app/pages/corrida_page.dart';
+import 'package:meu_primeiro_app/pages/historico_page.dart';
+import 'package:meu_primeiro_app/pages/mapa_pages.dart';
 import 'perfil_page.dart';
 import 'inicio_page.dart';
 
@@ -298,11 +302,11 @@ class _DashboardPageState extends State<DashboardPage> {
     final List<Widget> telas = [
       const InicioPage(),                   // Índice 0 (Início)
       _buildDashboardBody(context),         // Índice 1 (Dashboard)
-      _buildPlaceholder('Corrida'),         // Índice 2
-      _buildPlaceholder('Histórico'),       // Índice 3
-      _buildPlaceholder('Mapa'),            // Índice 4
+      const CorridaPage(),         // Índice 2
+      const HistoricoPage(),       // Índice 3
+      const MapaPage(),            // Índice 4
       const PerfilPage(),                   // Índice 5 (Perfil)
-      _buildPlaceholder('Configurações'),   // Índice 6
+      const ConfiguracoesPage(),   // Índice 6
     ];
 
     return Scaffold(
