@@ -302,7 +302,7 @@ class _DashboardPageState extends State<DashboardPage> {
     final List<Widget> telas = [
       const InicioPage(),                   // Índice 0 (Início)
       _buildDashboardBody(context),         // Índice 1 (Dashboard)
-      const CorridaPage(),         // Índice 2
+      const CorridaPage(),        // Índice 2
       const HistoricoPage(),       // Índice 3
       const MapaPage(),            // Índice 4
       const PerfilPage(),                   // Índice 5 (Perfil)
