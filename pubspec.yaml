@@ -1,10 +1,11 @@
+
 name: meu_primeiro_app
 description: "Aplicativo Ritmo Único para corredores."
 publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.13.5
+  sdk: ^3.13.2
 
 dependencies:
   flutter:
